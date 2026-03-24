@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)https://www.google.com/ -->
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Action Plan — Customer Status | {{REPORT_DATE}}</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',-apple-system,sans-serif;background:#f0f2f5;color:#1a202c;min-height:100vh;}
+.topbar{background:#fff;border-bottom:2px solid #e2e8f0;padding:18px 36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.topbar-left .brand{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#38a169;margin-bottom:4px;}
+.topbar-left h1{font-size:19px;font-weight:800;color:#1a202c;letter-spacing:-0.4px;}
+.topbar-left p{font-size:12px;color:#718096;margin-top:2px;}
+.main{max-width:960px;margin:0 auto;padding:28px 24px 60px;}
+.tab-nav{display:flex;align-items:flex-end;gap:0;border-bottom:2px solid #e2e8f0;margin-bottom:0;overflow-x:auto;scrollbar-width:none;}
+.tab-nav::-webkit-scrollbar{display:none;}
+.tab-btn{background:none;border:none;padding:10px 18px 11px;font-size:13px;font-weight:600;color:#718096;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:6px;border-radius:6px 6px 0 0;}
+.tab-btn:hover{color:#2d3748;background:#f7fafc;}
+.tab-btn.active{color:#276749;border-bottom-color:#38a169;background:#fff;}
+.tab-pill{font-size:10px;font-weight:700;padding:1px 7px;border-radius:10px;}
+.tp-green{background:#f0fff4;color:#276749;}
+.tp-orange{background:#fffaf0;color:#c05621;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.tab-content-inner{background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 14px 14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+.card-stripe-top{height:4px;}
+.stripe-green{background:linear-gradient(90deg,#276749,#38a169);}
+.stripe-orange{background:linear-gradient(90deg,#c05621,#dd6b20);}
+.card-hero{padding:22px 26px 18px;border-bottom:1px solid #f7fafc;}
+.hero-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.hero-left .project-name{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:6px;}
+.hero-left .project-sub{font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.hero-right{display:flex;align-items:center;gap:16px;}
+.status-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:999px;font-size:12px;font-weight:700;}
+.sp-green{background:#f0fff4;color:#276749;border:1px solid #9ae6b4;}
+.sp-orange{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;}
+.sp-dot{width:7px;height:7px;border-radius:50%;}
+.spd-green{background:#22c55e;} .spd-orange{background:#f97316;}
+.pct-block{text-align:right;}
+.pct-num{font-size:26px;font-weight:800;color:#0f172a;line-height:1;}
+.pct-lbl{font-size:11px;color:#94a3b8;margin-bottom:5px;}
+.pbar-bg{width:90px;height:5px;background:#f1f5f9;border-radius:3px;overflow:hidden;}
+.pbar-fill{height:100%;border-radius:3px;}
+.pfill-green{background:linear-gradient(90deg,#16a34a,#22c55e);}
+.pfill-orange{background:linear-gradient(90deg,#ea580c,#f97316);}
+.intro-text{padding:16px 26px;font-size:13px;color:#475569;line-height:1.65;background:#fafbfc;border-bottom:1px solid #f1f5f9;}
+.acc-section{border-bottom:1px solid #f1f5f9;}
+.acc-section:last-child{border-bottom:none;}
+.acc-trigger{display:flex;align-items:center;padding:14px 26px;cursor:pointer;user-select:none;gap:12px;transition:background .15s;}
+.acc-trigger:hover{background:#fafbfc;}
+.acc-chev{font-size:11px;color:#cbd5e0;transition:transform .2s;flex-shrink:0;}
+.acc-open .acc-chev{transform:rotate(90deg);}
+.acc-trigger-label{flex:1;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#64748b;}
+.acc-body{display:none;padding:4px 26px 18px 50px;}
+.acc-open .acc-body{display:block;}
+.hl{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.hl li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#334155;line-height:1.55;}
+.hl li .ico{flex-shrink:0;margin-top:1px;font-size:12px;}
+.hl .c .ico::before{content:'✅';}
+.hl .ip .ico::before{content:'🔄';}
+.hl .up .ico::before{content:'📅';}
+.hl .nt .ico::before{content:'📋';}
+.notice{border-radius:8px;padding:12px 16px;margin-top:14px;font-size:12.5px;line-height:1.65;}
+.notice-green{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;}
+.notice-orange{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;}
+.notice strong{font-weight:700;}
+.send-bar{display:flex;justify-content:flex-end;padding:16px 26px 20px;border-top:1px solid #f1f5f9;gap:10px;}
+.send-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#276749,#38a169);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 2px 6px rgba(56,161,105,0.3);}
+.send-btn:hover{background:linear-gradient(135deg,#22543d,#276749);box-shadow:0 4px 12px rgba(56,161,105,0.4);transform:translateY(-1px);}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.show{display:flex;}
+.modal{background:#fff;border-radius:16px;max-width:680px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,0.25);}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #e2e8f0;}
+.modal-header h3{font-size:15px;font-weight:700;color:#1a202c;}
+.modal-close{background:none;border:none;font-size:20px;cursor:pointer;color:#94a3b8;padding:2px 6px;border-radius:4px;}
+.modal-close:hover{background:#f7fafc;color:#4a5568;}
+.modal-body{padding:20px 22px;}
+.modal-body p{font-size:13px;color:#4a5568;margin-bottom:12px;line-height:1.6;}
+.modal-img-wrap{border:2px dashed #e2e8f0;border-radius:8px;overflow:hidden;margin-bottom:14px;min-height:80px;display:flex;align-items:center;justify-content:center;background:#fafbfc;}
+.modal-img-wrap img{max-width:100%;display:block;}
+.modal-img-wrap .loading{font-size:13px;color:#94a3b8;padding:30px;}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.ma-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid transparent;transition:all .15s;}
+.ma-primary{background:#276749;color:#fff;border-color:#276749;}
+.ma-primary:hover{background:#22543d;}
+.ma-secondary{background:#fff;color:#4a5568;border-color:#e2e8f0;}
+.ma-secondary:hover{background:#f7fafc;}
+.copy-hint{font-size:12px;color:#94a3b8;margin-top:10px;padding:8px 12px;background:#f8fafc;border-radius:6px;border:1px solid #e2e8f0;}
+.pri-high{background:#fff5f5;color:#c53030;border:1px solid #feb2b2;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;}
+.pri-med{background:#fffaf0;color:#c05621;border:1px solid #fbd38d;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;}
+.sep{color:#e2e8f0;}
+.completed-callout{text-align:center;background:linear-gradient(135deg,#f0fdf4,#f0f9ff);border:1px solid #d1fae5;border-radius:10px;padding:22px;margin:22px 26px 16px;}
+.cc-num{font-size:48px;font-weight:800;color:#22c55e;line-height:1;margin-bottom:4px;}
+.cc-lbl{font-size:12px;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:.5px;}
+.cc-sub{font-size:13px;color:#475569;margin-top:8px;}
+.completed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;padding:0 26px 22px;}
+.cg-item{background:#f8fafc;border:1px solid #e2e8f0;border-left:3px solid #3182ce;border-radius:8px;padding:10px 14px;}
+.cg-title{font-size:12.5px;font-weight:600;color:#1e293b;margin-bottom:3px;}
+.cg-meta{font-size:11px;color:#94a3b8;}
+.footer-bar{background:#fff;border-top:1px solid #e2e8f0;padding:14px 36px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#94a3b8;flex-wrap:wrap;gap:6px;margin-top:36px;}
+.footer-contact{font-weight:600;color:#475569;}
+</style><script src="customer-status-template_files/html2canvas.min.js.download"></script><script>
+var _currentImgDataUrl = null;
+
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  var panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(function(b){
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').indexOf("'" + id + "'") > -1)
+      b.classList.add('active');
+  });
+}
+
+function toggleAcc(id) {
+  var el = document.getElementById(id);
+  if (el) el.classList.toggle('acc-open');
+}
+
+function sendToCustomer(tabId, projectName) {
+  _currentImgDataUrl = null;
+  document.getElementById('modalTitle').textContent = '📧 Send to Customer — ' + projectName;
+  document.getElementById('modalProjectName').textContent = projectName;
+  document.getElementById('modalImgWrap').innerHTML = '<div class="loading">⏳ Generating image…</div>';
+  document.getElementById('copyBtn').style.display = 'none';
+  document.getElementById('dlBtn').style.display = 'none';
+  document.getElementById('copyHint').style.display = 'none';
+  document.getElementById('sendModal').classList.add('show');
+  var captureEl = document.getElementById('capture-' + tabId);
+  if (!captureEl) { document.getElementById('modalImgWrap').innerHTML = '<div class="loading" style="color:#e53e3e">Error: element not found.</div>'; return; }
+  var sendBar = captureEl.querySelector('.send-bar');
+  if (sendBar) sendBar.style.display = 'none';
+  setTimeout(function(){
+    if (typeof html2canvas === 'undefined') {
+      if (sendBar) sendBar.style.display = '';
+      document.getElementById('modalImgWrap').innerHTML = '<div class="loading" style="color:#e53e3e">Library not ready. Retry in a moment.</div>';
+      return;
+    }
+    html2canvas(captureEl, { scale:2, useCORS:true, backgroundColor:'#ffffff', logging:false,
+      width:captureEl.scrollWidth, height:captureEl.scrollHeight
+    }).then(function(canvas){
+      if (sendBar) sendBar.style.display = '';
+      _currentImgDataUrl = canvas.toDataURL('image/png');
+      var img = document.createElement('img');
+      img.src = _currentImgDataUrl; img.style.maxWidth = '100%';
+      document.getElementById('modalImgWrap').innerHTML = '';
+      document.getElementById('modalImgWrap').appendChild(img);
+      document.getElementById('copyBtn').style.display = 'inline-flex';
+      document.getElementById('dlBtn').style.display = 'inline-flex';
+    }).catch(function(err){
+      if (sendBar) sendBar.style.display = '';
+      document.getElementById('modalImgWrap').innerHTML = '<div class="loading" style="color:#e53e3e">Error: ' + err.message + '</div>';
+    });
+  }, 150);
+}
+
+function closeModal() { document.getElementById('sendModal').classList.remove('show'); }
+
+function copyImage() {
+  if (!_currentImgDataUrl) return;
+  fetch(_currentImgDataUrl).then(function(r){ return r.blob(); }).then(function(blob){
+    try {
+      navigator.clipboard.write([new ClipboardItem({'image/png': blob})]).then(function(){
+        document.getElementById('copyHint').style.display = 'block';
+        var btn = document.getElementById('copyBtn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(function(){ btn.innerHTML = '📋 Copy Image to Clipboard'; }, 2500);
+      }).catch(function(){
+        document.getElementById('copyHint').textContent = '⚠️ Right-click the image above and choose "Copy Image".';
+        document.getElementById('copyHint').style.display = 'block';
+      });
+    } catch(e) {
+      document.getElementById('copyHint').textContent = '⚠️ Right-click the image and choose "Copy Image" to copy manually.';
+      document.getElementById('copyHint').style.display = 'block';
+    }
+  });
+}
+
+function downloadImage() {
+  if (!_currentImgDataUrl) return;
+  var a = document.createElement('a');
+  a.href = _currentImgDataUrl;
+  a.download = 'action-plan-status-' + Date.now() + '.png';
+  a.click();
+}
+
+document.getElementById('sendModal').addEventListener('click', function(e){
+  if (e.target === this) closeModal();
+});
+</script></head><body jsmodel="hspDDf " jsaction="xjhTIf:.CLIENT;O2vyse:.CLIENT;IVKTfe:.CLIENT;Ez7VMc:.CLIENT;R6Slyc:.CLIENT;ydZCDf:.CLIENT">
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="brand">{{COMPANY_NAME}} · Customer Update</div>
+    <h1>Your Action Plan — Project Status</h1>
+    <p>Week of {{REPORT_PERIOD}} &nbsp;·&nbsp; Account Manager: {{OWNER_NAME}}</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+       Add one .tab-btn per project. Use tp-green for On Track,
+       tp-orange for Needs Attention. Match onclick ID to panel ID.
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="tab-nav" id="tabNav">
+    <button class="tab-btn active" onclick="switchTab(&#39;project-1&#39;)">
+      <span>{{TAB_1_LABEL}}</span><span class="tab-pill tp-green">On Track</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab(&#39;project-2&#39;)">
+      <span>{{TAB_2_LABEL}}</span><span class="tab-pill tp-green">On Track</span>
+    </button>
+    <!-- Add more tab-btn elements here. Change tp-green to tp-orange for at-risk tabs -->
+    <button class="tab-btn" onclick="switchTab(&#39;project-N&#39;)">
+      <span>{{TAB_N_LABEL}}</span><span class="tab-pill tp-orange">Attention</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab(&#39;completed&#39;)">
+      <span>✅ Completed</span>
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TAB PANEL: ON TRACK PROJECT
+       - id="panel-{project-id}" must match tab onclick value
+       - capture id="capture-{project-id}" used by Send button
+       - Duplicate entire .tab-panel block for each project
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel active" id="panel-project-1">
+    <div class="tab-content-inner" id="capture-project-1">
+      <div class="card-stripe-top stripe-green"></div>
+
+      <!-- HERO: project name, meta, status, progress -->
+      <div class="card-hero">
+        <div class="hero-row">
+          <div class="hero-left">
+            <div class="project-name">{{P1_FULL_NAME}}</div>
+            <div class="project-sub">
+              <span class="pri-high">{{P1_PRIORITY}} Priority</span>
+              <span class="sep">|</span><span>{{P1_DATES}}</span>
+              <span class="sep">|</span><span>{{P1_TASK_SUMMARY}}</span>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="status-pill sp-green"><span class="sp-dot spd-green"></span>On Track</div>
+            <div class="pct-block">
+              <div class="pct-lbl">Progress</div>
+              <div class="pct-num">{{P1_PCT}}%</div>
+              <div class="pbar-bg"><div class="pbar-fill pfill-green" style="width:{{P1_PCT}}%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTRO: customer-friendly summary sentence -->
+      <div class="intro-text">{{P1_INTRO_TEXT}}</div>
+
+      <!-- ACCORDION SECTION: Completed This Week -->
+      <div class="acc-section acc-open" id="as-p1-completed">
+        <div class="acc-trigger" onclick="toggleAcc(&#39;as-p1-completed&#39;)">
+          <span class="acc-chev">▶</span>
+          <span class="acc-trigger-label">Completed This Week</span>
+        </div>
+        <div class="acc-body">
+          <ul class="hl">
+            <!-- class="c" = completed, "ip" = in-progress, "up" = upcoming -->
+            <li class="c"><span class="ico"></span>{{P1_COMPLETED_1}}</li>
+            <li class="c"><span class="ico"></span>{{P1_COMPLETED_2}}</li>
+            <!-- Add more <li> as needed -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- ACCORDION SECTION: In Progress -->
+      <div class="acc-section acc-open" id="as-p1-inprogress">
+        <div class="acc-trigger" onclick="toggleAcc(&#39;as-p1-inprogress&#39;)">
+          <span class="acc-chev">▶</span>
+          <span class="acc-trigger-label">In Progress</span>
+        </div>
+        <div class="acc-body">
+          <ul class="hl">
+            <li class="ip"><span class="ico"></span>{{P1_INPROGRESS_1}}</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ACCORDION SECTION: Coming Up (optional — delete if not needed) -->
+      <div class="acc-section acc-open" id="as-p1-upcoming">
+        <div class="acc-trigger" onclick="toggleAcc(&#39;as-p1-upcoming&#39;)">
+          <span class="acc-chev">▶</span>
+          <span class="acc-trigger-label">Coming Up</span>
+        </div>
+        <div class="acc-body">
+          <!-- Use notice-green for positive news, notice-orange for caution -->
+          <div class="notice notice-green">📅 <strong>{{P1_UPCOMING_LABEL}}:</strong> {{P1_UPCOMING_TEXT}}</div>
+        </div>
+      </div>
+
+      <!-- SEND BAR: always last inside capture div -->
+      <div class="send-bar">
+        <button class="send-btn" onclick="sendToCustomer(&#39;project-1&#39;,&#39;{{TAB_1_LABEL}}&#39;)">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          Send to Customer
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- END PANEL: project-1. Duplicate above .tab-panel block for each On Track project -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TAB PANEL: NEEDS ATTENTION PROJECT
+       Same structure but use stripe-orange, sp-orange, pfill-orange
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="panel-project-N">
+    <div class="tab-content-inner" id="capture-project-N">
+      <div class="card-stripe-top stripe-orange"></div>
+      <div class="card-hero">
+        <div class="hero-row">
+          <div class="hero-left">
+            <div class="project-name">{{PN_FULL_NAME}}</div>
+            <div class="project-sub">
+              <span class="pri-high">{{PN_PRIORITY}} Priority</span>
+              <span class="sep">|</span><span>{{PN_DATES}}</span>
+              <span class="sep">|</span><span>{{PN_TASK_SUMMARY}}</span>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="status-pill sp-orange"><span class="sp-dot spd-orange"></span>Needs Attention</div>
+            <div class="pct-block">
+              <div class="pct-lbl">Progress</div>
+              <div class="pct-num" style="color:#f97316;">{{PN_PCT}}%</div>
+              <div class="pbar-bg"><div class="pbar-fill pfill-orange" style="width:{{PN_PCT}}%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="intro-text">{{PN_INTRO_TEXT}}</div>
+
+      <div class="acc-section acc-open" id="as-pN-progress">
+        <div class="acc-trigger" onclick="toggleAcc(&#39;as-pN-progress&#39;)">
+          <span class="acc-chev">▶</span>
+          <span class="acc-trigger-label">Recent Progress</span>
+        </div>
+        <div class="acc-body">
+          <ul class="hl">
+            <li class="c"><span class="ico"></span>{{PN_PROGRESS_1}}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="acc-section acc-open" id="as-pN-commitment">
+        <div class="acc-trigger" onclick="toggleAcc(&#39;as-pN-commitment&#39;)">
+          <span class="acc-chev">▶</span>
+          <span class="acc-trigger-label">Our Commitment &amp; Next Steps</span>
+        </div>
+        <div class="acc-body">
+          <div class="notice notice-orange">📋 <strong>{{PN_NOTICE_LABEL}}:</strong> {{PN_NOTICE_TEXT}}</div>
+        </div>
+      </div>
+
+      <div class="send-bar">
+        <button class="send-btn" onclick="sendToCustomer(&#39;project-N&#39;,&#39;{{TAB_N_LABEL}}&#39;)">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          Send to Customer
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- END PANEL: project-N -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TAB PANEL: COMPLETED PROJECTS
+       Always keep this as the last tab panel
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="panel-completed">
+    <div class="tab-content-inner" id="capture-completed">
+      <div class="card-stripe-top" style="background:linear-gradient(90deg,#2b6cb0,#3182ce)"></div>
+      <div class="completed-callout">
+        <div class="cc-num">{{COMPLETED_COUNT}}</div>
+        <div class="cc-lbl">Action Plans Successfully Completed</div>
+        <div class="cc-sub">{{COMPLETED_SUMMARY_TEXT}}</div>
+      </div>
+      <div class="completed-grid">
+        <div class="cg-item">
+          <div class="cg-title">{{COMP_PROJECT_1}}</div>
+          <div class="cg-meta">✅ Complete {{COMP_DATE_1}} · 100% · {{COMP_DATES_1}}</div>
+        </div>
+        <!-- Repeat .cg-item for each completed project -->
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .main -->
+
+<div class="footer-bar">
+  <span>{{COMPANY_NAME}} Action Plans · Customer Report · {{REPORT_DATE}}</span>
+  <span class="footer-contact">Questions? Contact: {{OWNER_EMAIL}}</span>
+</div>
+
+<!-- MODAL: do not modify this block — it is shared by all Send buttons -->
+<div class="modal-overlay" id="sendModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">📧 Send to Customer</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>A snapshot of the <strong id="modalProjectName"></strong> status card has been generated. Copy and paste it directly into the body of an email.</p>
+      <div class="modal-img-wrap" id="modalImgWrap">
+        <div class="loading">⏳ Generating image…</div>
+      </div>
+      <div class="copy-hint" id="copyHint" style="display:none">✅ Image copied! Open your email client and press Ctrl+V (or Cmd+V on Mac) to paste it into the email body.</div>
+      <div class="modal-actions">
+        <button class="ma-btn ma-primary" id="copyBtn" onclick="copyImage()" style="display:none">📋 Copy Image to Clipboard</button>
+        <button class="ma-btn ma-primary" id="dlBtn" onclick="downloadImage()" style="display:none">⬇ Download PNG</button>
+        <button class="ma-btn ma-secondary" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="snbc"><div jsname="sM5MNb" aria-live="polite" class="LH3wG"></div></div></body></html>

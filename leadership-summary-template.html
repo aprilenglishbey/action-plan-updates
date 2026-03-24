@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)https://www.google.com/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Action Plans — Weekly Leadership Summary | {{REPORT_DATE}}</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',-apple-system,sans-serif;background:#f0f2f5;color:#1a202c;min-height:100vh;}
+.topbar{background:#fff;border-bottom:1px solid #e2e8f0;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
+.topbar-left h1{font-size:20px;font-weight:800;color:#1a202c;letter-spacing:-0.4px;}
+.topbar-left p{font-size:12px;color:#718096;margin-top:2px;}
+.stat-row{display:flex;gap:10px;}
+.stat-pill{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;}
+.sp-green{background:#f0fff4;color:#276749;border:1px solid #9ae6b4;}
+.sp-orange{background:#fffaf0;color:#c05621;border:1px solid #fbd38d;}
+.sp-blue{background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;}
+.sp-dot{width:7px;height:7px;border-radius:50%;}
+.spd-green{background:#38a169;} .spd-orange{background:#dd6b20;} .spd-blue{background:#3182ce;}
+.main{max-width:1100px;margin:0 auto;padding:28px 24px;}
+.section-header{display:flex;align-items:center;gap:10px;margin:0 0 12px;}
+.section-header h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#718096;white-space:nowrap;}
+.section-line{flex:1;height:1px;background:#e2e8f0;}
+.section-spacer{margin-top:28px;}
+.acc-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:box-shadow .2s;}
+.acc-card:hover{box-shadow:0 3px 10px rgba(0,0,0,0.08);}
+.acc-card.on-track{border-left:4px solid #38a169;}
+.acc-card.at-risk{border-left:4px solid #dd6b20;}
+.acc-card.complete{border-left:4px solid #3182ce;opacity:0.85;}
+.acc-header{display:flex;align-items:center;padding:16px 18px;cursor:pointer;user-select:none;gap:14px;transition:background .15s;}
+.acc-header:hover{background:#fafbfc;}
+.acc-chevron{font-size:13px;color:#a0aec0;transition:transform .25s;flex-shrink:0;}
+.acc-card.open .acc-chevron{transform:rotate(90deg);}
+.acc-header-main{flex:1;display:flex;align-items:center;gap:14px;min-width:0;flex-wrap:wrap;}
+.acc-title{font-size:14px;font-weight:700;color:#1a202c;}
+.acc-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:#718096;}
+.acc-meta-sep{color:#e2e8f0;}
+.acc-header-right{display:flex;align-items:center;gap:16px;flex-shrink:0;}
+.prog-wrap{display:flex;align-items:center;gap:8px;}
+.prog-pct{font-size:13px;font-weight:700;color:#2d3748;min-width:32px;text-align:right;}
+.prog-bg{width:100px;height:5px;background:#edf2f7;border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:3px;}
+.pf-green{background:linear-gradient(90deg,#276749,#38a169);}
+.pf-orange{background:linear-gradient(90deg,#c05621,#dd6b20);}
+.pf-blue{background:linear-gradient(90deg,#2b6cb0,#3182ce);}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;}
+.b-green{background:#f0fff4;color:#276749;border:1px solid #9ae6b4;}
+.b-orange{background:#fffaf0;color:#c05621;border:1px solid #fbd38d;}
+.b-dot{width:5px;height:5px;border-radius:50%;}
+.bd-green{background:#38a169;} .bd-orange{background:#dd6b20;}
+.pri-high{background:#fff5f5;color:#c53030;border:1px solid #feb2b2;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;}
+.pri-med{background:#fffaf0;color:#c05621;border:1px solid #fbd38d;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;}
+.acc-body{display:none;padding:0 18px 18px 50px;border-top:1px solid #f7fafc;}
+.acc-card.open .acc-body{display:block;}
+.body-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#a0aec0;margin:14px 0 8px;}
+.hl-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.hl-list li{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:#4a5568;line-height:1.55;}
+.hl-list li .icon{flex-shrink:0;margin-top:1px;font-size:12px;}
+.hl-list .done .icon::before{content:'✅';}
+.hl-list .warn .icon::before{content:'⚠️';}
+.hl-list .mile .icon::before{content:'🔷';}
+.hl-list .danger .icon::before{content:'🚨';}
+.alert-box{border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;line-height:1.6;}
+.alert-orange{background:#fffaf0;border:1px solid #fbd38d;color:#7b341e;}
+.alert-red{background:#fff5f5;border:1px solid #feb2b2;color:#742a2a;}
+.alert-box strong{font-weight:700;}
+.complete-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:8px;}
+.cc{background:#fff;border:1px solid #e2e8f0;border-left:3px solid #3182ce;border-radius:8px;padding:12px 14px;box-shadow:0 1px 2px rgba(0,0,0,0.04);}
+.cc-title{font-size:12.5px;font-weight:600;color:#2d3748;margin-bottom:3px;}
+.cc-meta{font-size:11px;color:#a0aec0;}
+.footer{max-width:1100px;margin:24px auto 0;padding:16px 24px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;font-size:11px;color:#a0aec0;flex-wrap:wrap;gap:6px;}
+.controls{display:flex;gap:8px;margin-bottom:16px;}
+.ctrl-btn{background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600;color:#4a5568;cursor:pointer;transition:all .15s;}
+.ctrl-btn:hover{background:#f7fafc;border-color:#cbd5e0;color:#2d3748;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <h1>📋 Action Plans — Weekly Leadership Summary</h1>
+    <p>Week of {{REPORT_DATE}} &nbsp;·&nbsp; Owner: {{OWNER_NAME}} &nbsp;·&nbsp; Source: Asana</p>
+  </div>
+  <div class="stat-row">
+    <div class="stat-pill sp-green"><span class="sp-dot spd-green"></span>{{ON_TRACK_COUNT}} On Track</div>
+    <div class="stat-pill sp-orange"><span class="sp-dot spd-orange"></span>{{AT_RISK_COUNT}} At Risk</div>
+    <div class="stat-pill sp-blue"><span class="sp-dot spd-blue"></span>{{COMPLETED_COUNT}} Completed</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="controls">
+    <button class="ctrl-btn" onclick="expandAll()">▼ Expand All</button>
+    <button class="ctrl-btn" onclick="collapseAll()">▲ Collapse All</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       ON TRACK SECTION
+       Duplicate the .acc-card block below for
+       each On Track project. Set class="acc-card on-track open"
+       ═══════════════════════════════════════ -->
+  <div class="section-header">
+    <h2>🟢 On Track</h2><div class="section-line"></div>
+  </div>
+
+  <!-- PROJECT CARD: ON TRACK — copy/paste this block for each On Track project -->
+  <div class="acc-card on-track open" id="card-{{PROJECT_ID_1}}">
+    <div class="acc-header" onclick="toggle(&#39;card-{{PROJECT_ID_1}}&#39;)">
+      <span class="acc-chevron">▶</span>
+      <div class="acc-header-main">
+        <span class="acc-title">{{PROJECT_CUSTOMER}} — {{PROJECT_LOCATION}}</span>
+        <div class="acc-meta">
+          <span class="badge b-green"><span class="b-dot bd-green"></span>On Track</span>
+          <span class="acc-meta-sep">·</span><span class="pri-{{PRIORITY_CLASS}}">{{PRIORITY_LABEL}}</span>
+          <span class="acc-meta-sep">·</span><span>{{PROJECT_CUSTOMER}}</span>
+          <span class="acc-meta-sep">·</span><span>{{PROJECT_DATES}}</span>
+          <span class="acc-meta-sep">·</span><span>{{TASK_SUMMARY}}</span>
+        </div>
+      </div>
+      <div class="acc-header-right">
+        <div class="prog-wrap">
+          <div class="prog-pct">{{PROGRESS_PCT}}%</div>
+          <div class="prog-bg"><div class="prog-fill pf-green" style="width:{{PROGRESS_PCT}}%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="body-label">This Week's Highlights</div>
+      <ul class="hl-list">
+        <!-- Use class="done" for completed, "warn" for pending, "mile" for milestones, "danger" for blockers -->
+        <li class="done"><span class="icon"></span>{{HIGHLIGHT_1}}</li>
+        <li class="done"><span class="icon"></span>{{HIGHLIGHT_2}}</li>
+        <li class="warn"><span class="icon"></span>{{HIGHLIGHT_3}}</li>
+        <li class="mile"><span class="icon"></span>{{HIGHLIGHT_4}}</li>
+        <!-- Add or remove <li> lines as needed -->
+      </ul>
+    </div>
+  </div>
+  <!-- END PROJECT CARD — repeat above block for additional On Track projects -->
+
+
+  <!-- ═══════════════════════════════════════
+       AT RISK SECTION
+       Set class="acc-card at-risk open"
+       ═══════════════════════════════════════ -->
+  <div class="section-spacer"></div>
+  <div class="section-header">
+    <h2>🟠 At Risk</h2><div class="section-line"></div>
+  </div>
+
+  <!-- PROJECT CARD: AT RISK — copy/paste this block for each At Risk project -->
+  <div class="acc-card at-risk open" id="card-{{PROJECT_ID_A}}">
+    <div class="acc-header" onclick="toggle(&#39;card-{{PROJECT_ID_A}}&#39;)">
+      <span class="acc-chevron">▶</span>
+      <div class="acc-header-main">
+        <span class="acc-title">{{PROJECT_CUSTOMER_A}} — {{PROJECT_LOCATION_A}}</span>
+        <div class="acc-meta">
+          <span class="badge b-orange"><span class="b-dot bd-orange"></span>At Risk</span>
+          <span class="acc-meta-sep">·</span><span class="pri-{{PRIORITY_CLASS_A}}">{{PRIORITY_LABEL_A}}</span>
+          <span class="acc-meta-sep">·</span><span>{{PROJECT_CUSTOMER_A}}</span>
+          <span class="acc-meta-sep">·</span><span>{{PROJECT_DATES_A}}</span>
+          <span class="acc-meta-sep">·</span><span style="color:#e53e3e;font-weight:600;">{{RISK_SUMMARY}}</span>
+        </div>
+      </div>
+      <div class="acc-header-right">
+        <div class="prog-wrap">
+          <div class="prog-pct" style="color:#dd6b20;">{{PROGRESS_PCT_A}}%</div>
+          <div class="prog-bg"><div class="prog-fill pf-orange" style="width:{{PROGRESS_PCT_A}}%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="body-label">Completed This Period</div>
+      <ul class="hl-list">
+        <li class="done"><span class="icon"></span>{{COMPLETED_ITEM_1}}</li>
+      </ul>
+      <div class="body-label">Blockers &amp; Action Required</div>
+      <ul class="hl-list">
+        <li class="danger"><span class="icon"></span>{{BLOCKER_1}}</li>
+        <li class="danger"><span class="icon"></span>{{BLOCKER_2}}</li>
+      </ul>
+      <div class="alert-box alert-orange"><strong>⚠ Leadership Action Required:</strong> {{LEADERSHIP_ACTION}}</div>
+    </div>
+  </div>
+  <!-- END AT RISK CARD — repeat above block for additional At Risk projects -->
+
+
+  <!-- ═══════════════════════════════════════
+       COMPLETED / ARCHIVED SECTION
+       Add one .cc block per completed project
+       ═══════════════════════════════════════ -->
+  <div class="section-spacer"></div>
+  <div class="section-header">
+    <h2>✅ Completed (Archived)</h2><div class="section-line"></div>
+  </div>
+  <div class="complete-grid">
+    <div class="cc">
+      <div class="cc-title">{{COMPLETED_PROJECT_1}}</div>
+      <div class="cc-meta">✅ Complete {{COMPLETE_DATE_1}} · 100% · {{CUSTOMER_1}} · {{DATES_1}}</div>
+    </div>
+    <!-- Repeat .cc blocks for each completed project -->
+  </div>
+
+</div>
+
+<div class="footer">
+  <span>Generated: {{REPORT_DATE}} · Source: Asana Action Plans Portfolio</span>
+  <span>Owner: {{OWNER_NAME}} · For internal leadership use only</span>
+</div>
+
+<script>
+function toggle(id){
+  const c=document.getElementById(id);
+  c.classList.toggle('open');
+}
+function expandAll(){
+  document.querySelectorAll('.acc-card').forEach(c=>c.classList.add('open'));
+}
+function collapseAll(){
+  document.querySelectorAll('.acc-card').forEach(c=>c.classList.remove('open'));
+}
+</script>
+
+<div id="snbc"><div jsname="sM5MNb" aria-live="polite" class="LH3wG"></div></div></body></html>

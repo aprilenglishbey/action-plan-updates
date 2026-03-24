@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)https://www.google.com/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Claude Project Setup — Action Plans Skill</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',-apple-system,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6;}
+.page{max-width:860px;margin:0 auto;padding:40px 28px 80px;}
+
+/* header */
+.doc-header{background:linear-gradient(135deg,#1e3a5f,#276749);border-radius:14px;padding:32px 36px;color:#fff;margin-bottom:36px;}
+.doc-header .eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px;}
+.doc-header h1{font-size:26px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;}
+.doc-header p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.65;}
+.badge-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;}
+
+/* toc */
+.toc{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px 24px;margin-bottom:32px;}
+.toc h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;margin-bottom:12px;}
+.toc ol{padding-left:20px;display:flex;flex-direction:column;gap:6px;}
+.toc ol li{font-size:13px;color:#3182ce;}
+.toc ol li a{color:#3182ce;text-decoration:none;font-weight:500;}
+.toc ol li a:hover{text-decoration:underline;}
+
+/* sections */
+.section{margin-bottom:36px;}
+.section-title{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:4px;display:flex;align-items:center;gap:10px;}
+.section-sub{font-size:13px;color:#64748b;margin-bottom:18px;}
+.section-divider{height:1px;background:#e2e8f0;margin-bottom:20px;}
+
+/* steps */
+.step-list{display:flex;flex-direction:column;gap:12px;}
+.step{display:flex;gap:14px;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:#1e3a5f;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.step-body{flex:1;}
+.step-title{font-size:14px;font-weight:700;color:#1e293b;margin-bottom:3px;}
+.step-desc{font-size:13px;color:#475569;line-height:1.6;}
+.step-desc strong{font-weight:700;color:#1e293b;}
+.step-desc code{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:4px;padding:1px 6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#7c3aed;}
+
+/* code block */
+.code-block{background:#0f172a;border-radius:10px;padding:20px 22px;margin:14px 0;overflow-x:auto;}
+.code-block pre{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#e2e8f0;white-space:pre-wrap;line-height:1.7;}
+.code-block .comment{color:#64748b;}
+.code-block .token{color:#7dd3fc;}
+.code-block .string{color:#86efac;}
+.code-block .key{color:#fbbf24;}
+.copy-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600;color:#4a5568;cursor:pointer;margin-top:8px;transition:all .15s;}
+.copy-btn:hover{background:#f8fafc;border-color:#cbd5e0;}
+
+/* callout boxes */
+.callout{border-radius:10px;padding:14px 18px;margin:16px 0;font-size:13px;line-height:1.65;}
+.callout-blue{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;}
+.callout-green{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;}
+.callout-orange{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;}
+.callout-purple{background:#faf5ff;border:1px solid #e9d5ff;color:#6b21a8;}
+.callout strong{font-weight:700;}
+
+/* file cards */
+.file-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;}
+.file-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;}
+.file-card .fc-icon{font-size:20px;margin-bottom:8px;}
+.file-card .fc-name{font-size:13px;font-weight:700;color:#1e293b;margin-bottom:3px;}
+.file-card .fc-desc{font-size:12px;color:#64748b;line-height:1.5;}
+.file-card .fc-tab{display:inline-block;margin-top:8px;background:#f1f5f9;color:#475569;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;}
+
+/* token table */
+.token-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+.token-table th{background:#f8fafc;padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#94a3b8;border-bottom:2px solid #e2e8f0;}
+.token-table td{padding:9px 14px;border-bottom:1px solid #f1f5f9;color:#334155;vertical-align:top;}
+.token-table tr:last-child td{border-bottom:none;}
+.token-table td:first-child{font-family:'JetBrains Mono',monospace;font-size:12px;color:#7c3aed;background:#faf5ff;white-space:nowrap;}
+.token-table tr:hover td{background:#f8fafc;}
+
+/* trigger examples */
+.trigger-list{display:flex;flex-direction:column;gap:8px;margin:14px 0;}
+.trigger{background:#fff;border:1px solid #e2e8f0;border-left:3px solid #38a169;border-radius:8px;padding:10px 14px;font-size:13px;color:#1e293b;font-style:italic;}
+.trigger::before{content:'“';}
+.trigger::after{content:'”';}
+
+/* checklist */
+.checklist{list-style:none;display:flex;flex-direction:column;gap:8px;margin:12px 0;}
+.checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#334155;line-height:1.55;}
+.checklist li::before{content:'☐';font-size:15px;color:#94a3b8;flex-shrink:0;margin-top:1px;}
+
+footer{border-top:1px solid #e2e8f0;margin-top:48px;padding-top:20px;font-size:12px;color:#94a3b8;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="eyebrow">Setup Guide</div>
+    <h1>Action Plans Dashboard — Skill Setup</h1>
+    <p>Everything you need to configure this as a reusable skill in Claude Projects (Option 1) and as saved local HTML templates (Option 2). Follow both for the best experience.</p>
+    <div class="badge-row">
+      <span class="badge">📋 Option 1: Claude Project</span>
+      <span class="badge">💾 Option 2: HTML Templates</span>
+      <span class="badge">🔑 Prompt Instructions</span>
+      <span class="badge">🏷️ Token Reference</span>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="https://www.google.com/#files">Your Template Files</a></li>
+      <li><a href="https://www.google.com/#option1">Option 1 — Claude Project Setup</a></li>
+      <li><a href="https://www.google.com/#instructions">Full Project Instructions (copy-paste ready)</a></li>
+      <li><a href="https://www.google.com/#option2">Option 2 — Local HTML Template Setup</a></li>
+      <li><a href="https://www.google.com/#tokens">Token Reference Guide</a></li>
+      <li><a href="https://www.google.com/#triggers">How to Trigger It</a></li>
+      <li><a href="https://www.google.com/#checklist">Weekly Run Checklist</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1: FILES -->
+  <div class="section" id="files">
+    <div class="section-title">📁 1. Your Template Files</div>
+    <div class="section-sub">You have two HTML template files — save both to your computer from the browser tabs listed below.</div>
+    <div class="section-divider"></div>
+
+    <div class="file-cards">
+      <div class="file-card">
+        <div class="fc-icon">📋</div>
+        <div class="fc-name">leadership-summary-template.html</div>
+        <div class="fc-desc">Collapsible internal dashboard for leadership. Dark-accented light theme. Expand/Collapse All. One card per project with status, progress bar, and weekly highlights.</div>
+        <div class="fc-tab">Browser Tab 3 (this session)</div>
+      </div>
+      <div class="file-card">
+        <div class="fc-icon">📧</div>
+        <div class="fc-name">customer-status-template.html</div>
+        <div class="fc-desc">Tabbed customer-facing report. One tab per action plan. Collapsible sections. "Send to Customer" button generates a PNG image for email. No button in exported image.</div>
+        <div class="fc-tab">Browser Tab 4 (this session)</div>
+      </div>
+    </div>
+
+    <div class="callout callout-blue">
+      <strong>How to save:</strong> In each template tab, press <code>Ctrl+S</code> (Windows) or <code>Cmd+S</code> (Mac) → save as type "Webpage, Complete" or "HTML Only". Name them exactly as shown above. Store both in a folder like <code>Documents/Vincit/Dashboard-Templates/</code>.
+    </div>
+
+    <div class="callout callout-green">
+      <strong>Also upload both files to your Claude Project</strong> as Knowledge Files (see Option 1 below). Claude will read them as reference templates when rebuilding dashboards each week.
+    </div>
+  </div>
+
+  <!-- SECTION 2: OPTION 1 -->
+  <div class="section" id="option1">
+    <div class="section-title">🤖 2. Option 1 — Claude Project Setup</div>
+    <div class="section-sub">Create a persistent Claude Project so the skill is always available — no rebuilding, no re-explaining.</div>
+    <div class="section-divider"></div>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Go to Claude.ai and create a new Project</div>
+          <div class="step-desc">In the left sidebar on <strong>claude.ai</strong>, click <strong>"Projects"</strong> → <strong>"New Project"</strong>. Name it: <code>Action Plans Dashboards</code>.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Upload both HTML template files as Knowledge Files</div>
+          <div class="step-desc">Inside the project, click <strong>"Add content"</strong> → <strong>"Upload files"</strong>. Upload both <code>leadership-summary-template.html</code> and <code>customer-status-template.html</code>. Claude will reference these automatically every run.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Paste the Project Instructions (Section 3 below)</div>
+          <div class="step-desc">Click <strong>"Edit project instructions"</strong> and paste in the full instructions block from Section 3. This teaches Claude exactly what to do, which Asana URL to use, and how to populate the templates — every single time.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Start a new conversation in the project and test it</div>
+          <div class="step-desc">Open a new chat inside the project and type one of the trigger phrases from Section 6. Claude will navigate to Asana, pull all data, and build both dashboards — no setup needed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: INSTRUCTIONS -->
+  <div class="section" id="instructions">
+    <div class="section-title">📝 3. Full Project Instructions</div>
+    <div class="section-sub">Copy everything in the block below and paste it into the Claude Project's "Project Instructions" field.</div>
+    <div class="section-divider"></div>
+
+    <div class="callout callout-purple">
+      <strong>What these instructions do:</strong> They tell Claude your role, your Asana URL, the two templates to use, exactly what data to collect from each project, how to handle On Track vs At Risk projects differently, and the output format expected. Claude will follow these automatically every time a trigger phrase is used inside this project.
+    </div>
+
+    <div class="code-block">
+      <pre><span class="comment">## ROLE</span>
+You are an operations reporting assistant for Vincit Group.
+Your job is to build two weekly HTML dashboards from live
+Asana data — a leadership summary and a customer-facing
+report — using the HTML template files in this project.
+
+<span class="comment">## ASANA SOURCE</span>
+Portfolio URL: https://app.asana.com/0/portfolio/1212719129341616/1212719185837647
+Owner: April Englishbey
+Company: Vincit Group
+Owner email: april.englishbey@vincitgroup.com
+
+<span class="comment">## TRIGGER PHRASES</span>
+When the user says any of the following, run the full
+workflow below:
+- "Run the Action Plans dashboards"
+- "Build this week's dashboards"
+- "Generate weekly reports"
+- "Run dashboards"
+- "Weekly update"
+
+<span class="comment">## WORKFLOW — follow these steps exactly, in order</span>
+
+<span class="key">STEP 1 — Open Asana Portfolio</span>
+Navigate to the portfolio URL above. Read the full
+project list including: Name, Status, Task Progress %,
+Due Date range, Priority, Customer.
+
+<span class="key">STEP 2 — Open Each Active Project's Status Update</span>
+For every project that is NOT archived/completed:
+  a. Click the project name to open it
+  b. Go to the Overview tab
+  c. Click the most recent status update to open it fully
+  d. Click "Continue reading" if the summary is truncated
+  e. Collect ALL of the following:
+     - Status (On Track / At Risk)
+     - Customer name
+     - Priority (High / Medium / Low)
+     - Date range (start – end)
+     - Task progress percentage
+     - Full summary text
+     - All completed items with dates
+     - All in-progress items with due dates
+     - All blockers with assignees and due dates
+     - All upcoming milestones
+  f. Go back to the portfolio list and repeat for next project
+
+<span class="key">STEP 3 — Collect Completed/Archived Project Names</span>
+From the main portfolio list, note all projects marked
+Complete or Archived: name, customer, completion date,
+date range.
+
+<span class="key">STEP 4 — Build Leadership Summary Dashboard</span>
+Use the template file: leadership-summary-template.html
+Replace ALL {{tokens}} with real data collected above.
+Rules:
+  - On Track projects: use class="acc-card on-track open"
+  - At Risk projects: use class="acc-card at-risk open"
+  - class="done" for completed highlights
+  - class="warn" for pending items with due dates
+  - class="mile" for upcoming milestones
+  - class="danger" for blockers requiring action
+  - Use alert-orange for At Risk leadership action boxes
+  - Use alert-red for Critical/High urgency blockers
+  - Set {{ON_TRACK_COUNT}}, {{AT_RISK_COUNT}}, {{COMPLETED_COUNT}}
+    to match actual project counts
+  - {{REPORT_DATE}} = today's date (e.g. March 22, 2026)
+  - {{OWNER_NAME}} = April Englishbey
+  - Give each card a unique {{PROJECT_ID}} (e.g. card-monogram-bristol)
+  - pri-high = High priority | pri-med = Medium priority
+
+<span class="key">STEP 5 — Build Customer-Facing Dashboard</span>
+Use the template file: customer-status-template.html
+Replace ALL {{tokens}} with real data.
+Rules:
+  - One .tab-panel per active project
+  - Tab IDs must be lowercase-hyphenated (e.g. "monogram-bristol")
+  - On Track: stripe-green, sp-green, pfill-green, sp-dot spd-green
+  - At Risk: stripe-orange, sp-orange, pfill-orange, sp-dot spd-orange
+  - Intro text MUST be customer-friendly — no internal escalation
+    language, no raw task counts, no assignee names. Focus on
+    progress, outcomes, and our team's commitment.
+  - At Risk projects: use notice-orange. Frame positively.
+    Say "our team is actively following up" not "16 tasks overdue".
+  - Completed section: count all archived projects, list each
+  - {{COMPANY_NAME}} = Vincit Group
+  - {{OWNER_EMAIL}} = april.englishbey@vincitgroup.com
+  - The Send to Customer button and modal are already in the
+    template — do not modify them, they work automatically.
+
+<span class="key">STEP 6 — Render Both Dashboards</span>
+Open two new browser tabs and render each HTML file
+using document.open() / document.write() / document.close().
+Then inject html2canvas into the customer-facing tab:
+  const s = document.createElement('script');
+  s.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+  document.head.appendChild(s);
+
+<span class="comment">## OUTPUT FORMAT</span>
+After both tabs are open and rendered:
+1. Confirm: "Both dashboards are ready."
+2. List each tab name and what it contains
+3. Remind the user: Ctrl+S to save each tab as an HTML file
+4. Note any projects that had missing data or needed assumptions
+
+<span class="comment">## DATA RULES</span>
+- Always use today's actual date for {{REPORT_DATE}}
+- Never fabricate task counts, percentages, or assignee names
+- If a status update is missing, note it in your confirmation
+- Completed/archived projects do NOT need status updates opened —
+  just use the name, customer, and date range from the list view
+- Duplicate project cards as needed — do not limit to the
+  template's placeholder count</pre>
+    </div>
+    <button class="copy-btn" onclick="copyInstructions()">📋 Copy Instructions to Clipboard</button>
+  </div>
+
+  <!-- SECTION 4: OPTION 2 -->
+  <div class="section" id="option2">
+    <div class="section-title">💾 4. Option 2 — Local HTML Template Setup</div>
+    <div class="section-sub">Keep the template files on your computer for manual or semi-manual use.</div>
+    <div class="section-divider"></div>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Save both template tabs to your computer</div>
+          <div class="step-desc">In each template tab (Tabs 3 and 4 of this session), press <code>Ctrl+S</code> → save as <strong>Webpage, HTML Only</strong>. Save to <code>Documents/Vincit/Dashboard-Templates/</code>.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Each week: give Claude the template + fresh Asana data</div>
+          <div class="step-desc">Start a new Claude chat. Attach both HTML files. Say: <em>"Populate these templates with this week's Asana Action Plans data from [URL]. Today is [date]."</em> Claude will build both dashboards without needing the Project setup.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Open completed dashboards directly in any browser</div>
+          <div class="step-desc">The HTML files are fully self-contained — no server, no internet needed for the layout. Just double-click any saved dashboard file to open it. Share via email attachment or save to a shared folder.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Optional: version the output files by date</div>
+          <div class="step-desc">Save completed dashboards as <code>leadership-2026-03-22.html</code> and <code>customer-2026-03-22.html</code> to build an archive. This gives leadership a timestamped history of every weekly report.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-orange">
+      <strong>Tip:</strong> Option 2 works best as a backup — if Claude Projects is unavailable, or if you want to manually tweak data before sharing. Always keep the Claude Project (Option 1) as your primary workflow since it handles the full Asana data pull automatically.
+    </div>
+  </div>
+
+  <!-- SECTION 5: TOKENS -->
+  <div class="section" id="tokens">
+    <div class="section-title">🏷️ 5. Token Reference Guide</div>
+    <div class="section-sub">Every <code>{{TOKEN}}</code> in the templates maps to a real data field. Claude handles these automatically — this table is for manual editing reference.</div>
+    <div class="section-divider"></div>
+
+    <div class="callout callout-blue"><strong>Global tokens</strong> (used in both templates)</div>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>Value</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>{{REPORT_DATE}}</td><td>Today's full date</td><td>March 22, 2026</td></tr>
+        <tr><td>{{REPORT_PERIOD}}</td><td>Week date range</td><td>Mar 16–22, 2026</td></tr>
+        <tr><td>{{OWNER_NAME}}</td><td>Account manager</td><td>April Englishbey</td></tr>
+        <tr><td>{{OWNER_EMAIL}}</td><td>Contact email</td><td>april.englishbey@vincitgroup.com</td></tr>
+        <tr><td>{{COMPANY_NAME}}</td><td>Your company</td><td>Vincit Group</td></tr>
+        <tr><td>{{ON_TRACK_COUNT}}</td><td># On Track projects</td><td>4</td></tr>
+        <tr><td>{{AT_RISK_COUNT}}</td><td># At Risk projects</td><td>2</td></tr>
+        <tr><td>{{COMPLETED_COUNT}}</td><td># Completed projects</td><td>6</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-blue" style="margin-top:16px;"><strong>Per-project tokens</strong> (leadership template — repeat for each project, increment suffix: _1, _2, _A etc.)</div>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>Value</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>{{PROJECT_ID_1}}</td><td>Unique kebab-case ID</td><td>card-monogram-bristol</td></tr>
+        <tr><td>{{PROJECT_CUSTOMER}}</td><td>Customer name</td><td>Monogram</td></tr>
+        <tr><td>{{PROJECT_LOCATION}}</td><td>Facility / location</td><td>Bristol</td></tr>
+        <tr><td>{{PRIORITY_CLASS}}</td><td>CSS class: high or med</td><td>high</td></tr>
+        <tr><td>{{PRIORITY_LABEL}}</td><td>Display label</td><td>High</td></tr>
+        <tr><td>{{PROJECT_DATES}}</td><td>Start – End dates</td><td>Mar 5 – Apr 9</td></tr>
+        <tr><td>{{TASK_SUMMARY}}</td><td>Task count note</td><td>13 of 17 tasks</td></tr>
+        <tr><td>{{PROGRESS_PCT}}</td><td>Integer 0–100</td><td>88</td></tr>
+        <tr><td>{{HIGHLIGHT_1..N}}</td><td>Bullet item text</td><td>Final Rinse Improvement (Mar 17)…</td></tr>
+        <tr><td>{{RISK_SUMMARY}}</td><td>At Risk short note</td><td>16 overdue tasks</td></tr>
+        <tr><td>{{BLOCKER_1..N}}</td><td>Blocker item text</td><td>Portal Metric Summary — 11 days overdue</td></tr>
+        <tr><td>{{LEADERSHIP_ACTION}}</td><td>Action required text</td><td>Conduct rapid status review…</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-blue" style="margin-top:16px;"><strong>Per-project tokens</strong> (customer template — prefix with P1_, P2_, PN_ per tab)</div>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>Value</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>{{TAB_N_LABEL}}</td><td>Short tab name</td><td>Monogram · Bristol</td></tr>
+        <tr><td>{{PN_FULL_NAME}}</td><td>Full project display name</td><td>Monogram · Bristol Facility</td></tr>
+        <tr><td>{{PN_PRIORITY}}</td><td>Priority word</td><td>High</td></tr>
+        <tr><td>{{PN_DATES}}</td><td>Date range</td><td>Mar 5 – Apr 9</td></tr>
+        <tr><td>{{PN_TASK_SUMMARY}}</td><td>Brief task note</td><td>13 of 17 tasks complete</td></tr>
+        <tr><td>{{PN_PCT}}</td><td>Integer 0–100</td><td>88</td></tr>
+        <tr><td>{{PN_INTRO_TEXT}}</td><td>Customer-facing summary</td><td>Your Bristol facility is progressing strongly…</td></tr>
+        <tr><td>{{PN_COMPLETED_N}}</td><td>Completed item (customer tone)</td><td>Final Rinse Improvement finalized…</td></tr>
+        <tr><td>{{PN_INPROGRESS_N}}</td><td>In-progress item</td><td>Chemical Trial: APC results expected by Mar 27</td></tr>
+        <tr><td>{{PN_UPCOMING_LABEL}}</td><td>Upcoming event label</td><td>Upcoming Audit</td></tr>
+        <tr><td>{{PN_UPCOMING_TEXT}}</td><td>Upcoming event detail</td><td>Ops Management Audit scheduled Mar 23–27</td></tr>
+        <tr><td>{{PN_NOTICE_LABEL}}</td><td>Notice heading (At Risk)</td><td>Action items pending</td></tr>
+        <tr><td>{{PN_NOTICE_TEXT}}</td><td>Notice body (At Risk)</td><td>Our team is actively following up…</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 6: TRIGGERS -->
+  <div class="section" id="triggers">
+    <div class="section-title">▶ 6. How to Trigger It</div>
+    <div class="section-sub">Open the Action Plans Dashboards project in Claude and use any of these phrases to start a full run.</div>
+    <div class="section-divider"></div>
+
+    <div class="trigger-list">
+      <div class="trigger">Run the Action Plans dashboards</div>
+      <div class="trigger">Build this week's dashboards</div>
+      <div class="trigger">Generate weekly reports</div>
+      <div class="trigger">Run dashboards</div>
+      <div class="trigger">Weekly update</div>
+      <div class="trigger">Build the leadership summary and customer report for this week</div>
+    </div>
+
+    <div class="callout callout-green" style="margin-top:16px;">
+      <strong>You can also add context in your trigger:</strong> e.g. "Run dashboards — today is March 28 and focus on the At Risk projects in the summary." Claude will incorporate the note while still following the full workflow.
+    </div>
+  </div>
+
+  <!-- SECTION 7: CHECKLIST -->
+  <div class="section" id="checklist">
+    <div class="section-title">✅ 7. Weekly Run Checklist</div>
+    <div class="section-sub">Follow this checklist every week to ensure a smooth, consistent run.</div>
+    <div class="section-divider"></div>
+
+    <ul class="checklist">
+      <li>Open the <strong>Action Plans Dashboards</strong> Claude Project</li>
+      <li>Start a new conversation (don't reuse old chats — avoids context confusion)</li>
+      <li>Type one of the trigger phrases above</li>
+      <li>Wait for Claude to complete the full Asana data pull (~2–5 min)</li>
+      <li>Review both rendered dashboards in their browser tabs</li>
+      <li>If anything looks wrong, say: <em>"The [project name] data is incorrect — [correction]"</em></li>
+      <li>Save the leadership tab: <code>Ctrl+S</code> → <code>leadership-YYYY-MM-DD.html</code></li>
+      <li>Save the customer tab: <code>Ctrl+S</code> → <code>customer-YYYY-MM-DD.html</code></li>
+      <li>Share leadership file with your team (email or shared drive)</li>
+      <li>For customer updates: open customer tab, go to each project tab, click <strong>Send to Customer</strong>, copy image, paste into email</li>
+    </ul>
+  </div>
+
+  <footer>
+    <span>Action Plans Dashboard Skill · Setup Guide · Vincit Group</span>
+    <span>Generated with Claude · Keep this file with your templates folder</span>
+  </footer>
+
+</div>
+
+<script>
+function copyInstructions() {
+  const pre = document.querySelector('.code-block pre');
+  const text = pre ? pre.innerText : '';
+  navigator.clipboard.writeText(text).then(function(){
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✅ Copied to clipboard!';
+    setTimeout(function(){ btn.textContent = '📋 Copy Instructions to Clipboard'; }, 3000);
+  }).catch(function(){
+    alert('Please manually select and copy the text in the grey block above.');
+  });
+}
+</script>
+
+<div id="snbc"><div jsname="sM5MNb" aria-live="polite" class="LH3wG"></div></div></body></html>
